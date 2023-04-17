@@ -7,6 +7,8 @@ const { NotImplementedError } = require('../extensions/index.js');
 * using Node from extensions
 */
 
+
+
 class Node {
   constructor(data) {
     this.data = data;
@@ -17,15 +19,16 @@ class Node {
 class BinarySearchTree {
 
   constructor() {
-    this.root = null;
+    this.treeRoot = null;
   }
 
-  root = () => {
-    return this.root;
+  root() {
+      return this.treeRoot;
   }
 
   add(data) {
-    this.root = addWithin(this.root, data);
+    this.treeRoot = addWithin(this.treeRoot, data);
+    
 
     function addWithin(node, data){
       if(!node) {
@@ -49,7 +52,7 @@ class BinarySearchTree {
   }
 
   has(data) {
-    return searchWithin(this.root, data);
+    return searchWithin(this.treeRoot, data);
 
     function searchWithin(node, data){
       if(!node){
@@ -68,7 +71,7 @@ class BinarySearchTree {
   }
 
   find(data) {
-    let current = this.root;
+    let current = this.treeRoot;
     let found = false;
     while(current && !found){
       if(data < current.data){
@@ -85,7 +88,7 @@ class BinarySearchTree {
   }
 
   remove(data) {
-    this.root = removeNode(this.root, data);
+    this.treeRoot = removeNode(this.treeRoot, data);
     function removeNode(node, data){
       if(!node){
         return null;
@@ -128,11 +131,11 @@ class BinarySearchTree {
   }
 
   min() {
-    if(!this.root){
+    if(!this.treeRoot){
       return;
     }
 
-    let node = this.root;
+    let node = this.treeRoot;
     while(node.left) {
       node = node.left;
     }
@@ -141,11 +144,11 @@ class BinarySearchTree {
   }
 
   max() {
-    if(!this.root){
+    if(!this.treeRoot){
       return;
     }
 
-    let node = this.root;
+    let node = this.treeRoot;
     while(node.right) {
       node = node.right;
     }
